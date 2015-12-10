@@ -8,6 +8,7 @@ import { Router, Route, Link, IndexRoute } from 'react-router'
 import Home from 'Home/routes'
 import Settings from 'Settings/routes'
 import Other from 'Other/routes'
+import Work from 'Work/client/routes'
 
 // define root component
 const App = React.createClass({
@@ -25,7 +26,8 @@ const rootRoute = {
     indexRoute: Home,
     childRoutes: [
       Settings,
-      Other
+      Other,
+      Work
     ]
   }]
 }
