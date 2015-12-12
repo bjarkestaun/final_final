@@ -2,7 +2,6 @@
   This is the entry point. Export a react component here.
 */
 import React, { Component } from 'react';
-import Slides from '../../sub_Slides/client/index'
 
 export default class Preview extends Component {
   // propTypes: {
@@ -34,12 +33,6 @@ export default class Preview extends Component {
         console.error(err);
       }
     })
-  }
-
-  makeSlides() {
-    if(this.state.svgs.length > 0){
-      return <Slides svgs={this.state.svgs} />
-    }
   }
 
   render() {

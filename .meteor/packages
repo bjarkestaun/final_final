@@ -35,8 +35,6 @@ accounts-google
 
 
 #others
-meteorhacks:npm
 
-
-npm-container
 percolate:google-api
+meteorhacks:npm
