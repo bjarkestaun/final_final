@@ -15,8 +15,9 @@ let Projector = React.createClass({
   getInitialState: function () {
     var self = this
     var query = Presentations.find({gid: this.props.params.gid})
-    // this.setState({code: query.code})
-    // console.log(this.state.code)
+    // var thisPresentation = query.fetch()
+    // this.setState({presentation: thisPresentation})
+    // console.log(this.state)
     var handle = query.observeChanges({
       changed: function (id, changed) {
         self.props.setIndex(changed.index)
@@ -25,12 +26,25 @@ let Projector = React.createClass({
     return {}
   },
 
+  componentDidMount () {
+    if (this.props.params.gid) {
+      let presentation = Presentations.findOne({gid: this.props.params.gid})
+      if (this.isMounted()) {
+        /*eslint-disable*/
+        this.setState({presentation: presentation});
+        console.log('blaba ', this.state)
+        /*eslint-enable*/
+      }
+    }
+  },
+
   render: function () {
     console.log('in render ', this.props.projector.get('presentation'))
+
     return (
       < div >
-        < Slides gid={this.props.params.gid} index={this.props.projector.getIn(['presentation', 'index'])}/>
-        < Code gid={this.props.params.gid} />
+        // < getInitialSlides gid={this.props.params.gid} index={this.props.projector.getIn(['presentation', 'index'])}/>
+        // < Code gid={this.props.params.gid} />
       </ div >
     );
   }

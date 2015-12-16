@@ -13,7 +13,9 @@ export default React.createClass({
     if (this.props.gid) {
       let presentation = Presentations.findOne({gid: this.props.gid})
       if (this.isMounted() && presentation.code) {
+        /*eslint-disable*/
         this.setState({code: presentation.code});
+        /*eslint-enable*/
       }
     }
   },

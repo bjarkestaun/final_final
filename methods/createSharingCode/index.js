@@ -21,7 +21,7 @@ export default function (length) {
   });
   console.log(usedStrings)
   var result;
-  while (!result) {
+  while (!result && usedStrings !== undefined) {
     result = getRandomString(length);
     result = usedStrings.indexOf(result) === -1 ? result : undefined;
   }
