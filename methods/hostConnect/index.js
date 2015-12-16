@@ -1,4 +1,3 @@
-const getSVG = Meteor.npmRequire('google-slides-downloader')
 import Presentations from 'db/Presentations'
 
   // method for creating a new presentation in database with svg elements
@@ -8,7 +7,7 @@ export default function (url, id, gid, cb) {
     if(err) {
       console.error('from bind env ', err)
     }
-    Meteor.call('createSharingCode', 4, function (err, res) {
+    Meteor.call('createSharingCode', 2, function (err, res) {
       Presentations.upsert({gid: gid}, {
         svgs: svgs,
         url: url,

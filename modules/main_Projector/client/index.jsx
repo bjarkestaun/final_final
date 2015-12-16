@@ -15,6 +15,8 @@ let Projector = React.createClass({
   getInitialState: function () {
     var self = this
     var query = Presentations.find({gid: this.props.params.gid})
+    // this.setState({code: query.code})
+    // console.log(this.state.code)
     var handle = query.observeChanges({
       changed: function (id, changed) {
         self.props.setIndex(changed.index)

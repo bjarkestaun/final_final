@@ -4,20 +4,21 @@
 import React, { Component } from 'react'
 import Presentations from 'db/Presentations'
 
-export default class Code extends Component {
-  constructor () {
-    super();
-    this.codeGetter = this.codeGetter.bind(this);
-  }
+export default React.createClass({
+  getInitialState () {
+    return {code: ''}
+  },
 
-  codeGetter () {
+  componentDidMount () {
     if (this.props.gid) {
       let presentation = Presentations.findOne({gid: this.props.gid})
-      return presentation.code;
+      if (this.isMounted() && presentation.code) {
+        this.setState({code: presentation.code});
+      }
     }
-  }
+  },
 
   render () {
-    return <div>Access code: {this.codeGetter()}</div>
+    return <div>Access code: {this.state.code}</div>
   }
-}
+})
