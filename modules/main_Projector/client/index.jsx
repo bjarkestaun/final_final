@@ -12,6 +12,8 @@ import Code from 'sub_SharingCode/client/index'
 import Presentations from 'db/Presentations'
 
 let Projector = React.createClass({
+  mixins: [ReactMeteorData],
+
   getInitialState: function () {
     var self = this
     var query = Presentations.find({gid: this.props.params.gid})
@@ -23,12 +25,18 @@ let Projector = React.createClass({
     return {}
   },
 
+  getMeteorData: function () {
+    return {
+      presentation: Presentations.findOne({gid: this.props.params.gid})
+    };
+  },
+
   render: function () {
     console.log('in render ', this.props.projector.get('presentation'))
     return (
       < div >
-        < Slides gid={this.props.params.gid} index={this.props.projector.getIn(['presentation', 'index'])}/>
-        < Code gid={this.props.params.gid} />
+        < Slides gid={this.data.gid} index={this.props.projector.getIn(['presentation', 'index'])}/>
+        < Code gid={this.data.code} />
       </ div >
     );
   }
