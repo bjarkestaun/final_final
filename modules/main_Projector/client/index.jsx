@@ -16,11 +16,10 @@ let Projector = React.createClass({
   },
 
   render: function () {
-    console.log(this.data.Presentation.index);
     return (
         <div>
-          <Slides gid={this.props.params.gid} index={this.data.Presentation.index} />
-          <Code gid={this.props.params.gid} />
+          { this.data.Presentation ? <div> Hi  <Slides gid={this.props.params.gid} index={this.data.Presentation.index} />
+          <Code gid={this.props.params.gid} /> </div> : '' }
         </div>
     );
   }

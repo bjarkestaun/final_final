@@ -22,6 +22,8 @@ export default function (url, id, gid, cb) {
   })
   GoogleApi.post('drive/v2/files/' + gid + '/permissions', {data: {'type': 'anyone', 'role': 'reader'}}, function (err, result) {
     // pass in url to get an array of svgs
+    console.log('err ', err)
+    console.log('result ', result)
     getSVG.getSVGs(url, doIt);
   });
 }
